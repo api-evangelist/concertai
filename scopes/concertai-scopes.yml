@@ -1,0 +1,84 @@
+generated: '2026-08-09'
+method: probed
+source: https://auth.precision.concertai.com/.well-known/openid-configuration
+docs: null
+note: >-
+  ConcertAI publishes no scopes or permissions reference. The scopes below are the
+  scopes_supported advertised by the OpenID Connect discovery document on the Auth0
+  tenant fronting the Precision platform. They are the standard OIDC claim scopes plus
+  offline_access — no product/resource scopes (data, trial, imaging, patient) are
+  advertised anonymously, which means any API-level authorization model for the
+  Precision or Eureka platforms is not publicly discoverable.
+schemes:
+- name: precision-oidc
+  source: well-known/concertai-precision-openid-configuration.json
+  issuer: https://auth.precision.concertai.com/
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://auth.precision.concertai.com/authorize
+    tokenUrl: https://auth.precision.concertai.com/oauth/token
+  - flow: clientCredentials
+    tokenUrl: https://auth.precision.concertai.com/oauth/token
+  - flow: deviceCode
+    deviceAuthorizationUrl: https://auth.precision.concertai.com/oauth/device/code
+    tokenUrl: https://auth.precision.concertai.com/oauth/token
+scopes:
+- scope: openid
+  description: Request an OpenID Connect ID token for the authenticating user.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: profile
+  description: Access the user's basic profile claims.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: offline_access
+  description: Issue a refresh token for long-lived access.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: name
+  description: Access the user's full name claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: given_name
+  description: Access the user's given name claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: family_name
+  description: Access the user's family name claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: nickname
+  description: Access the user's nickname claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: email
+  description: Access the user's email address claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: email_verified
+  description: Access the user's email verification status claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: picture
+  description: Access the user's profile picture claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: created_at
+  description: Access the account creation timestamp claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: identities
+  description: Access the linked-identity claim for federated accounts.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: phone
+  description: Access the user's phone number claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+- scope: address
+  description: Access the user's address claim.
+  flows: [authorizationCode]
+  sources: [well-known/concertai-precision-openid-configuration.json]
+x-evidence:
+- url: https://auth.precision.concertai.com/.well-known/openid-configuration
+  http_status: 200

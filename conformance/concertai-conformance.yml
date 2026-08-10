@@ -1,0 +1,86 @@
+generated: '2026-08-09'
+method: probed
+source: >-
+  https://auth.precision.concertai.com/.well-known/openid-configuration ;
+  https://www.concertai.com/privacy-policy
+note: >-
+  Asserted only from documents fetched anonymously. ConcertAI publishes no OpenAPI,
+  no developer portal and no trust center, so every standard that would normally be
+  read from a specification is recorded as not-determinable rather than false.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    RFC 6749 authorization server metadata published at
+    /.well-known/oauth-authorization-server with authorize + token endpoints.
+- id: oidc-core
+  conforms: true
+  evidence: >-
+    OpenID Connect discovery document with issuer, jwks_uri, userinfo_endpoint and
+    id_token_signing_alg_values_supported.
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 application/json.
+- id: rfc7636-pkce
+  conforms: true
+  evidence: 'code_challenge_methods_supported: [S256, plain]'
+- id: rfc8628-device-authorization-grant
+  conforms: true
+  evidence: device_authorization_endpoint advertised.
+- id: rfc8693-token-exchange
+  conforms: true
+  evidence: 'grant_types_supported includes urn:ietf:params:oauth:grant-type:token-exchange'
+- id: rfc7523-jwt-bearer
+  conforms: true
+  evidence: 'grant_types_supported includes urn:ietf:params:oauth:grant-type:jwt-bearer'
+- id: rfc9449-dpop
+  conforms: true
+  evidence: 'dpop_signing_alg_values_supported: [ES256]'
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint advertised at /oidc/register.
+- id: oidc-backchannel-logout
+  conforms: true
+  evidence: 'backchannel_logout_supported: true'
+- id: ciba
+  conforms: true
+  evidence: 'backchannel_authentication_endpoint advertised; delivery mode: poll'
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.concertai.com and www.terarecon.com.
+- id: rfc8615-well-known-agent-card
+  conforms: false
+  evidence: >-
+    No A2A agent card on any host; the 200s on precision.concertai.com and
+    starbi.concertai.com are SPA soft-404s (identical body on a random control path).
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI/Swagger document found on any reachable host.
+- id: fhir
+  conforms: null
+  evidence: >-
+    Not determinable. ConcertAI ingests EHR data across ~1,000 oncology sites but
+    publishes no interface specification, so FHIR support cannot be verified publicly.
+- id: hipaa
+  conforms: null
+  evidence: >-
+    Not determinable. ConcertAI handles protected health information and operates under
+    US healthcare law, but publishes no HIPAA attestation, BAA or trust page.
+- id: gdpr
+  conforms: null
+  evidence: Privacy policy references legitimate-interest processing; no certification published.
+- id: ccpa
+  conforms: true
+  evidence: >-
+    Privacy policy cites California Civil Code 1798.115(c), 1798.130(a)(5)(c),
+    1798.130(c) and 1798.140 with consumer-rights disclosures.
+- id: rfc9457-problem-details
+  conforms: null
+  evidence: Not determinable — no public API responses to inspect.
+x-evidence:
+- url: https://auth.precision.concertai.com/.well-known/oauth-authorization-server
+  http_status: 200
+- url: https://www.concertai.com/.well-known/security.txt
+  http_status: 404
+- url: https://www.concertai.com/privacy-policy
+  http_status: 200

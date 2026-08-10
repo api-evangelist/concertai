@@ -1,0 +1,85 @@
+generated: '2026-08-09'
+method: probed
+source: https://auth.precision.concertai.com/.well-known/openid-configuration
+note: >-
+  Derived from the OpenID Connect discovery documents ConcertAI serves anonymously on
+  the two identity hosts fronting the authenticated Precision platform. ConcertAI
+  publishes no public API reference, so this is the only machine-readable statement of
+  its authentication model that a member of the public can read. No OpenAPI
+  securitySchemes exist in this repo to derive from.
+summary:
+  types:
+  - openIdConnect
+  - oauth2
+  api_key_in: []
+  oauth2_flows:
+  - authorization_code
+  - client_credentials
+  - refresh_token
+  - device_code
+  - implicit
+  - password
+  - token_exchange
+  - jwt_bearer
+  pkce: true
+  pkce_methods:
+  - S256
+  - plain
+  dpop: true
+  dpop_algs:
+  - ES256
+  mfa: true
+  dynamic_client_registration: true
+  identity_provider: Auth0 (custom domain)
+schemes:
+- name: precision-oidc
+  type: openIdConnect
+  issuer: https://auth.precision.concertai.com/
+  openIdConnectUrl: https://auth.precision.concertai.com/.well-known/openid-configuration
+  authorization_endpoint: https://auth.precision.concertai.com/authorize
+  token_endpoint: https://auth.precision.concertai.com/oauth/token
+  userinfo_endpoint: https://auth.precision.concertai.com/userinfo
+  jwks_uri: https://auth.precision.concertai.com/.well-known/jwks.json
+  revocation_endpoint: https://auth.precision.concertai.com/oauth/revoke
+  registration_endpoint: https://auth.precision.concertai.com/oidc/register
+  device_authorization_endpoint: https://auth.precision.concertai.com/oauth/device/code
+  end_session_endpoint: https://auth.precision.concertai.com/oidc/logout
+  backchannel_authentication_endpoint: https://auth.precision.concertai.com/bc-authorize
+  token_endpoint_auth_methods_supported:
+  - client_secret_basic
+  - client_secret_post
+  - private_key_jwt
+  - none
+  id_token_signing_alg_values_supported:
+  - HS256
+  - RS256
+  - PS256
+  subject_types_supported:
+  - public
+  backchannel_logout_supported: true
+  sources:
+  - well-known/concertai-precision-openid-configuration.json
+- name: precision-login-oidc
+  type: openIdConnect
+  issuer: https://login.precision.concertai.com/
+  openIdConnectUrl: https://login.precision.concertai.com/.well-known/openid-configuration
+  note: second Auth0 custom domain with an identical metadata document
+  sources:
+  - well-known/concertai-precision-login-openid-configuration.json
+public_api_authentication:
+  documented: false
+  detail: >-
+    No public developer portal or API reference exists, so there is no published
+    authentication guide for an external integrator. API and data access is arranged
+    through a commercial agreement; the TeraRecon Eureka AI-partner onboarding portal
+    is reached through a "Become A TeraRecon Partner" contact form rather than a
+    self-service signup.
+x-evidence:
+- url: https://auth.precision.concertai.com/.well-known/openid-configuration
+  http_status: 200
+  content_type: application/json
+- url: https://login.precision.concertai.com/.well-known/openid-configuration
+  http_status: 200
+  content_type: application/json
+- url: https://www.concertai.com/.well-known/openid-configuration
+  http_status: 404
