@@ -13,6 +13,17 @@ description: 'ConcertAI is a healthcare AI and real-world data company serving o
   specification; platform access is through the authenticated Precision application
   and integration is arranged through a partner/sales motion.'
 url: https://raw.githubusercontent.com/api-evangelist/concertai/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.concertai.com/hubfs/ConcertAI%20Cover%202%20(1).png
 x-type: company
 x-source: harvest:secondary-market
