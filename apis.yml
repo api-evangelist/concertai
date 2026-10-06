@@ -45,7 +45,7 @@ x-tier: stub
 x-tier-reason: harvest
 specificationVersion: '0.23'
 created: '2026-08-09'
-modified: '2026-08-09'
+modified: '2026-10-06'
 tags:
 - Company
 - Healthcare
@@ -63,6 +63,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://www.concertai.com/blog/rss.xml
+  type: BlogRSS
 - type: Website
   url: https://www.concertai.com/
 - type: Blog
